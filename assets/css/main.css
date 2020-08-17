@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500&display=swap');
 
-h1{
+h1,h2{
     font-family: 'Heebo', sans-serif;
     margin-top:10px;
 }
@@ -17,8 +17,12 @@ h3{
     margin-bottom: 20px;
     font-weight: lighter;
 }
-h1, h3, footer{
+h1, h3, h2, footer{
     text-align: center;
+}
+h2{
+    color: #FF0000;
+    background-color: #FFFF00;
 }
 footer{
     font-size: small;
