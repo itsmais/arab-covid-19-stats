@@ -1,5 +1,30 @@
 # arab-covid-19-stats
-A single webpage that displays COVID-19 statistics in the Arabic speaking part of the world.
-- Decide on what API to use
-- figure out a way to list the countries (maybe grid)?
-- 
+A single webpage that displays COVID-19 statistics in the Arab world.
+
+List of included countries:
+- Algeria
+- Bahrain
+- Comoros
+- Djibouti
+- Egypt
+- Iraq
+- Jordan
+- Kuwait
+- Lebanon
+- Libya
+- Mauritania
+- Morocco
+- Oman
+- Palestine
+- Qatar
+- Saudi Arabia	
+- Somalia
+- Sudan
+- Syria
+- Tunisia
+- United Arab Emirates	
+- Yemen
+
+Resources:
+- https://en.wikipedia.org/wiki/Arab_world
+- API: covid19api.com (slug)
