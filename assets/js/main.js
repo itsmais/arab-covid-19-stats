@@ -41,9 +41,17 @@ let settings = {
     "url": "https://api.covid19api.com/summary",
     "method": "GET",
     "timeout": 0,
+    "error": function(){
+        let headerTag = document.getElementById("header");
+        headerTag.innerHTML+="<h2>API Error (api.covid19api.com). Please try again later.</h2>"
+    }
   };
+
+
+
 $.ajax(settings).done(function (response) {
     console.log(response);
+    
     response.Countries.forEach(countryObject => {
         let rowContent="";
         if (listOfArabCountries.indexOf(countryObject.Slug)>=0){
@@ -52,8 +60,9 @@ $.ajax(settings).done(function (response) {
             rowContent = rowContent + makeTableCell(countryObject.TotalRecovered); // Total Recoveries
             rowContent = rowContent + makeTableCell(countryObject.TotalDeaths); // Total Deaths
             rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed); // Total Confirmed
-            rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed - countryObject.TotalDeaths - countryObject.TotalRecovered); // Active Cases
+            rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed - countryObject.TotalDeaths-countryObject.TotalRecovered); // Active Cases
             table.innerHTML += makeTableRow(rowContent);
+            // document.getElementById("main-text").innerHTML+=countryObject.Country + " " + countryObject.TotalConfirmed+"</br>";
         }
     });
   });   
