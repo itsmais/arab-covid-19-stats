@@ -52,7 +52,7 @@ $.ajax(settings).done(function (response) {
             rowContent = rowContent + makeTableCell(countryObject.TotalRecovered); // Total Recoveries
             rowContent = rowContent + makeTableCell(countryObject.TotalDeaths); // Total Deaths
             rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed); // Total Confirmed
-            rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed - countryObject.TotalDeaths - countryObject.TotalRecovered); // Active Cases
+            // rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed - countryObject.TotalDeaths - countryObject.TotalRecovered); // Active Cases
             table.innerHTML += makeTableRow(rowContent);
         }
     });
