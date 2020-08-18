@@ -21,7 +21,8 @@ const listOfArabCountries =[
     'Tunisia',
     'UAE',
     'Yemen'
-]
+];
+
 const listOfArabCountriesAbbreviations =[
     'DZ',
     'BH',
@@ -45,21 +46,17 @@ const listOfArabCountriesAbbreviations =[
     'TN',
     'AE',
     'YE'
-]
+];
 
-function makeTableCell(element){
+function makeTableCell (element){
     return ("<td>" + element + "</td>");
 }
 
-  function makeTableRow(element){
-      return ("<tr>" + element + "</tr>");
-  }
-
-listOfArabCountries.forEach(country => {
-}); 
+function makeTableRow (element){
+    return ("<tr>" + element + "</tr>");
+}
 
 let table = document.getElementById("stats-table");
-
 
 let settings = {
     "url": "https://corona.lmao.ninja/v2/countries?yesterday&sort",
@@ -71,24 +68,21 @@ let settings = {
     }
   };
 
-
-
 $.ajax(settings).done(function (response) {
-    console.log(response);
+    // console.log(response);
     
     response.forEach(countryObject => {
         let rowContent="";
         if (listOfArabCountries.indexOf(countryObject.country)>=0){
             rowContent = rowContent + makeTableCell(countryObject.country); // Country
-            rowContent = rowContent + makeTableCell(countryObject.todayCases); // New Recoveries
-            rowContent = rowContent + makeTableCell(countryObject.todayRecovered); // New Recoveries
-            rowContent = rowContent + makeTableCell(countryObject.recovered); // Total Recoveries
-            rowContent = rowContent + makeTableCell(countryObject.deaths); // Total Deaths
-            rowContent = rowContent + makeTableCell(countryObject.cases); // Total Confirmed
-            rowContent = rowContent + makeTableCell(countryObject.active); // Active Cases
-            rowContent = rowContent + makeTableCell(countryObject.activePerOneMillion); // Active Cases
+            rowContent = rowContent + makeTableCell(countryObject.todayCases.toLocaleString()); // New Cases
+            rowContent = rowContent + makeTableCell(countryObject.todayRecovered.toLocaleString()); // New Recoveries
+            rowContent = rowContent + makeTableCell(countryObject.recovered.toLocaleString()); // Total Recoveries
+            rowContent = rowContent + makeTableCell(countryObject.deaths.toLocaleString()); // Total Deaths
+            rowContent = rowContent + makeTableCell(countryObject.cases.toLocaleString()); // Total Cases
+            rowContent = rowContent + makeTableCell(countryObject.active.toLocaleString()); // Active Cases
+            rowContent = rowContent + makeTableCell(countryObject.activePerOneMillion.toLocaleString()); // Active Cases
             table.innerHTML += makeTableRow(rowContent);
-            // document.getElementById("main-text").innerHTML+=countryObject.Country + " " + countryObject.TotalConfirmed+"</br>";
         }
     });
   });   
