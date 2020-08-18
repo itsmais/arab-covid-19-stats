@@ -11,6 +11,10 @@ table{
 th{
     font-weight: 500;
     color: #FFF;
+    position: sticky;
+    top: 0;
+    background: #DC3545;
+  /* box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); */
 }
 h3{
     margin-top: -10px;
