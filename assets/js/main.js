@@ -1,26 +1,50 @@
 const listOfArabCountries =[
-    'algeria',
-    'bahrain',
-    'comoros',
-    'djibouti',
-    'egypt',
-    'iraq',
-    'jordan',
-    'kuwait',
-    'lebanon',
-    'libya',
-    'mauritania',
-    'morocco',
-    'oman',
-    'palestine',
-    'qatar',
-    'saudi-arabia',
-    'somalia',
-    'sudan',
-    'syria',
-    'tunisia',
-    'united-arab-emirates',
-    'yemen'
+    'Algeria',
+    'Bahrain',
+    'Comoros',
+    'Djibouti',
+    'Egypt',
+    'Iraq',
+    'Jordan',
+    'Kuwait',
+    'Lebanon',
+    'Libya',
+    'Mauritania',
+    'Morocco',
+    'Oman',
+    'Palestine',
+    'Qatar',
+    'Saudi Arabia',
+    'Somalia',
+    'Sudan',
+    'Syrian Arab Republic',
+    'Tunisia',
+    'UAE',
+    'Yemen'
+]
+const listOfArabCountriesAbbreviations =[
+    'DZ',
+    'BH',
+    'KM',
+    'DJ',
+    'EG',
+    'IQ',
+    'JO',
+    'KW',
+    'LB',
+    'LY',
+    'MR',
+    'MA',
+    'OM',
+    'PS',
+    'QA',
+    'SA',
+    'SO',
+    'SU',
+    'SY',
+    'TN',
+    'AE',
+    'YE'
 ]
 
 function makeTableCell(element){
@@ -38,12 +62,12 @@ let table = document.getElementById("stats-table");
 
 
 let settings = {
-    "url": "https://api.covid19api.com/summary",
+    "url": "https://corona.lmao.ninja/v2/countries?yesterday&sort",
     "method": "GET",
     "timeout": 0,
     "error": function(){
         let headerTag = document.getElementById("header");
-        headerTag.innerHTML+="<h2>API Error (api.covid19api.com). Please try again later.</h2>"
+        headerTag.innerHTML+="<h2>API Error. Please try again later.</h2>"
     }
   };
 
@@ -52,15 +76,16 @@ let settings = {
 $.ajax(settings).done(function (response) {
     console.log(response);
     
-    response.Countries.forEach(countryObject => {
+    response.forEach(countryObject => {
         let rowContent="";
-        if (listOfArabCountries.indexOf(countryObject.Slug)>=0){
-            rowContent = rowContent + makeTableCell(countryObject.Country); // Country
-            rowContent = rowContent + makeTableCell(countryObject.NewRecovered); // New Recoveries
-            rowContent = rowContent + makeTableCell(countryObject.TotalRecovered); // Total Recoveries
-            rowContent = rowContent + makeTableCell(countryObject.TotalDeaths); // Total Deaths
-            rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed); // Total Confirmed
-            rowContent = rowContent + makeTableCell(countryObject.TotalConfirmed - countryObject.TotalDeaths-countryObject.TotalRecovered); // Active Cases
+        if (listOfArabCountries.indexOf(countryObject.country)>=0){
+            rowContent = rowContent + makeTableCell(countryObject.country); // Country
+            rowContent = rowContent + makeTableCell(countryObject.todayCases); // New Recoveries
+            rowContent = rowContent + makeTableCell(countryObject.todayRecovered); // New Recoveries
+            rowContent = rowContent + makeTableCell(countryObject.recovered); // Total Recoveries
+            rowContent = rowContent + makeTableCell(countryObject.deaths); // Total Deaths
+            rowContent = rowContent + makeTableCell(countryObject.cases); // Total Confirmed
+            rowContent = rowContent + makeTableCell(countryObject.active); // Active Cases
             table.innerHTML += makeTableRow(rowContent);
             // document.getElementById("main-text").innerHTML+=countryObject.Country + " " + countryObject.TotalConfirmed+"</br>";
         }
