@@ -86,6 +86,7 @@ $.ajax(settings).done(function (response) {
             rowContent = rowContent + makeTableCell(countryObject.deaths); // Total Deaths
             rowContent = rowContent + makeTableCell(countryObject.cases); // Total Confirmed
             rowContent = rowContent + makeTableCell(countryObject.active); // Active Cases
+            rowContent = rowContent + makeTableCell(countryObject.activePerOneMillion); // Active Cases
             table.innerHTML += makeTableRow(rowContent);
             // document.getElementById("main-text").innerHTML+=countryObject.Country + " " + countryObject.TotalConfirmed+"</br>";
         }
