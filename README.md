@@ -27,4 +27,3 @@ List of included countries:
 
 Resources:
 - https://en.wikipedia.org/wiki/Arab_world
-- API: covid19api.com (slug)
