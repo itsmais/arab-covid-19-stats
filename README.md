@@ -27,3 +27,6 @@ List of included countries:
 
 Resources:
 - https://en.wikipedia.org/wiki/Arab_world
+
+## Future releases
+- Make graphs out of each country's given numbers. https://www.chartjs.org/
